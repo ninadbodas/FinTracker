@@ -1,0 +1,30 @@
+<!-- confirm_delete.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm Delete</title>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/base.css' %}">
+    <h1>Confirm Delete</h1>
+    <p>Are you sure you want to delete the transaction with the following details?</p>
+    
+    <ul>
+        <li><strong>Transaction Date:</strong> {{ transaction.transaction_date }}</li>
+        <li><strong>Amount:</strong> {{ transaction.amount }}</li>
+        <li><strong>Category:</strong> {{ transaction.category }}</li>
+        <li><strong>Account:</strong> {{ transaction.account }}</li>
+        <li><strong>Note:</strong> {{ transaction.note }}</li>
+        <li><strong>Description:</strong> {{ transaction.description }}</li>
+    </ul>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm Delete</button>
+    </form>
+
+    <a href="{% url 'transaction_list' %}">Cancel</a>
+</body>
+</html>

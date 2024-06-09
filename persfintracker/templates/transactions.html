@@ -1,0 +1,48 @@
+<!-- transactions.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transaction Tracker</title>
+</head>
+<body>
+    <h1>Transaction Tracker</h1>
+    
+    <table>
+        <link rel="stylesheet" type="text/css" href="{% static 'admin/css/base.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'custom_style.css' %}">
+        <thead>
+            <tr>
+                <th><a href="?sort_by=transaction_date{% if sort_by == 'transaction_date' %}{% if sort_order == 'asc' %}&sort_order=desc{% else %}&sort_order=asc{% endif %}{% endif %}">Transaction Date<span class="sort-icon {% if sort_by == 'transaction_date' %}{{ sort_order }}{% endif %}"></span></a></th>
+                <th>Amount</th>
+                <th>Category</th>
+                <th><a href="?sort_by=account{% if sort_by == 'account' %}{% if sort_order == 'asc' %}&sort_order=desc{% else %}&sort_order=asc{% endif %}{% endif %}">Account<span class="sort-icon {% if sort_by == 'account' %}{{ sort_order }}{% endif %}"></span></a></th>
+                <th>Note</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+            
+            <tr>
+                <td>{{ transaction.transaction_date }}</td>
+                <td>{{ transaction.amount }}</td>
+                <td>{{ transaction.category }}</td>
+                <td>{{ transaction.account }}</td>
+                <td>{{ transaction.note }}</td>
+                <td>{{ transaction.description }}</td>
+                <td>
+                    <a href="{% url 'edit_transaction' transaction.id %}">Edit</a> |
+                    <a href="{% url 'delete_transaction' transaction.id %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="{% url 'new_transaction' %}">New Transaction</a>
+
+</body>
+</html>

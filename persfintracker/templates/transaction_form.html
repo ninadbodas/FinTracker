@@ -1,0 +1,25 @@
+<!-- transaction_form.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if form.instance.pk %}Edit Transaction{% else %}New Transaction{% endif %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/forms.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/responsive.css' %}">
+</head>
+<body>
+    <h1>{% if form.instance.pk %}Edit Transaction{% else %}New Transaction{% endif %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="responsive-form">
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="admin-submit-button">Save</button>
+        <button type="submit" class="admin-cancel-link"><a href= "{% url 'transaction_list' %}">Cancel</a></button>
+    </form>
+    
+    <!--<a href="{% url 'transaction_list' %}" class="admin-cancel-link">Cancel</a>-->
+</body>
+</html>
