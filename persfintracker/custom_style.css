@@ -1,0 +1,10 @@
+/* custom_style.css */
+.sort-icon {
+    vertical-align: middle;
+}
+.sort-icon.asc::after {
+    content: " ▲"; /* Upward arrow */
+}
+.sort-icon.desc::after {
+    content: " ▼"; /* Downward arrow */
+}
