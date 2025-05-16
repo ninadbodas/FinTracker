@@ -38,8 +38,10 @@ jobs:
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v3
         with:
-          name: dummy-file
-          path: ./README.md
+          name: python-app
+          path: |
+            release.zip
+            !venv/
 
 
   deploy:
