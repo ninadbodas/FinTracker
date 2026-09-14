@@ -17,10 +17,12 @@
 	<key>recently_started_on_macos_versions</key>
 	<array>
 		<string>26.1.0</string>
+		<string>26.6.2</string>
 	</array>
 	<key>recently_started_postgresql_versions</key>
 	<array>
 		<string>18.1</string>
+		<string>18.6</string>
 	</array>
 </dict>
 </plist>
